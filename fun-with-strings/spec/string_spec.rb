@@ -23,7 +23,17 @@ describe String do
     end
 
     it "counts the words properly" do
-      count = "Doo bee doo bee doo".count_words
+      count = "doo bee doo bee doo".count_words
+      count['doo'].should eq(3)
+    end
+
+    it "should disregard special characters" do
+      count = "a man, a plan, a canal -- Panama".count_words
+      count['--'].should be nil
+    end
+
+    it "counts the words properly" do
+      count = "Doo bee doO bee doo".count_words
       count['doo'].should eq(3)
     end
   end
