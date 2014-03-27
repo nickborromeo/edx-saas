@@ -1,1 +1,1 @@
-require_relative '../lib/palindrome'
+require_relative '../lib/string'
