@@ -11,15 +11,10 @@ class String
   end
 
   def count_words
-    words = {}
-    self.scan(/\w+/).each do |word|
+    self.scan(/\w+/).inject(Hash.new(0)) do |words,word|
       word = word.downcase
-      if words[word]
-        words[word] += 1
-      else
-        words[word] = 1
-      end
+      words[word] += 1
+      words
     end
-    words
   end
 end

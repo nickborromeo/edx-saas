@@ -29,7 +29,7 @@ describe String do
 
     it "should disregard special characters" do
       count = "a man, a plan, a canal -- Panama".count_words
-      count['--'].should be nil
+      count['--'].should eq(0)
     end
 
     it "counts the words properly" do
