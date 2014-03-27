@@ -1,7 +1,7 @@
-class Palindrome
+class String
 
-  def self.is_palindrome?(word)
-    word = word.downcase.gsub(/[^a-zA-z]/,'')
+  def is_palindrome?
+    word = self.downcase.gsub(/[^a-zA-z]/,'')
     inverted_word = word.reverse
     if inverted_word != word
       return false
