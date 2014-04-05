@@ -59,6 +59,51 @@ describe "RPS" do
       rps.rps_game_winner(game).should == ["Dave", "S"]
     end
 
+    it "should be case insensitive" do
+      game = [ ["Armando", "p"], ["Dave", "s"] ]
+      rps.rps_game_winner(game).should == ["Dave", "s"]
+    end
+  end
+
+  describe "#rps_tournament_winner" do
+    let(:rps) { RPS.new }
+
+    let(:bracket) {
+      [
+        [
+          [ ["Armando", "P"], ["Dave", "S"] ],
+          [ ["Richard", "R"],  ["Michael", "S"] ],
+        ],
+        [
+          [ ["Allen", "S"], ["Omer", "P"] ],
+          [ ["David E.", "R"], ["Richard X.", "P"] ]
+        ]
+      ]
+    }
+
+    it "should not accept a bracket with an odd number of groups" do
+      odd_bracket =
+        [
+          [
+            [ ["Armando", "P"], ["Dave", "S"] ],
+            [ ["Richard", "R"],  ["Michael", "S"] ],
+          ]
+        ]
+      expect { rps.rps_tournament_winner(odd_bracket) }.to raise_error(InvalidBracketError)
+    end
+
+    it "can find the winner in a single group" do
+      group =
+        [
+          [ ["Armando", "P"], ["Dave", "S"] ],
+          [ ["Richard", "R"],  ["Michael", "S"] ],
+        ]
+      rps.rps_tournament_winner(group).should == ["Richard", "R"]
+    end
+
+    it "solves a two level tournament" do
+      rps.rps_tournament_winner(bracket).should == ["Richard", "R"]
+    end
   end
 
 end
