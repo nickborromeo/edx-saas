@@ -13,26 +13,14 @@ class RPS
 
     if player1_strategy == player2_strategy
       return player1
-    elsif player1_strategy == "R"
-      if player2_strategy == "S"
-        return player1
-      else
-        return player2
-      end
-    elsif player2_strategy == "R"
-      if player1_strategy == "S"
-        return player2
-      else
-        return player1
-      end
-    elsif player1_strategy == "S"
-      if player2_strategy == "P"
-        return player1
-      end
-    elsif player2_strategy == "S"
-      if player1_strategy == "P"
-        return player2
-      end
+    elsif player1_strategy == "R" and player2_strategy == "S"
+      return player1
+    elsif player1_strategy == "S" and player2_strategy == "P"
+      return player1
+    elsif player1_strategy == "P" and player2_strategy == "R"
+      return player1
+    else
+      return player2
     end
   end
 
